@@ -1,5 +1,6 @@
 # Simple Serial
 This library originally created by [nplan](https://github.com/nplan/simple_serial_arduino)  
+This library has been modified by me and Google Gemini.
 
 A simple library for communication over serial interfaces.
 It can be used for **microcontroller to microcontroller** communication  or
@@ -7,7 +8,7 @@ It can be used for **microcontroller to microcontroller** communication  or
 
 Currently supported platforms:
 * Arduino / C++
-* [Python](https://github.com/nplan/simple_serial_python)
+* Python
 
 This is a repository for the Arduino / C++ version. Find python version at:
 https://github.com/nplan/simple_serial_python
@@ -16,8 +17,17 @@ The library supports simple and efficient transfer of data types:
 * Integer (signed, 32 bit)
 * Floating point (32 bit)
 * Strings
+* Booleran array (32 bit) (NEW)
 
 Custom data types can be easily added.
+
+A new possibility to set a message valid for a period of time in the receiver is added,
+this provide better safety when you transfer some type of information.
+If you loose connection the information will be erased.
+```c++
+// Receiver initialized with a 1000ms (1 second) safety timeout
+SimpleSerial serial_link(&Serial1, 1000);
+```
 
 ## Installation
 

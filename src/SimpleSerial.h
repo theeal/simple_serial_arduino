@@ -1,4 +1,62 @@
-/*
+#ifndef SIMPLE_SERIAL_H
+#define SIMPLE_SERIAL_H
+
+#include <Arduino.h>
+#include "byte_conversion.h"
+
+class SimpleSerial {
+public:
+    struct Packet {
+        uint8_t id;
+        uint8_t payload_len;
+        uint8_t payload[64];
+        bool valid;
+    };
+
+    static constexpr uint8_t START_BYTE = 0x02; // STX
+    static constexpr uint8_t END_BYTE   = 0x03; // ETX
+    static constexpr uint8_t ESC_BYTE   = 0x01; // SOH
+
+    SimpleSerial(Stream* serial_port, uint32_t timeout_ms = 0);
+
+    void begin();
+    void loop();
+    
+    // Transmission API
+    bool send(uint8_t id, const uint8_t* payload, uint8_t len);
+    bool send_int(uint8_t id, int32_t val);
+    bool send_float(uint8_t id, float val);
+    
+    // DECLARATION ONLY (fixes redefinition error):
+    bool send_bool_array(uint8_t id, const bool* bool_arr, uint16_t count);
+
+    // Reception & Timeout API
+    bool available();
+    Packet read();
+    void setTimeout(uint32_t timeout_ms);
+    bool hasTimedOut() const;
+    void resetData();
+
+private:
+    Stream* _stream;
+    Packet _rx_packet;
+    Packet _last_valid_packet;
+    
+    bool _has_new_packet;
+    bool _is_escaped;
+    bool _receiving;
+    uint8_t _rx_buffer[70];
+    uint8_t _rx_idx;
+
+    uint32_t _timeout_ms;
+    uint32_t _last_rx_time;
+    bool _timed_out;
+
+    void process_byte(uint8_t b);
+    void write_escaped(uint8_t b);
+};
+
+#endif // SIMPLE_SERIAL_H/*
  * SimpleSerial.h - Library for serial communication.
  */
 

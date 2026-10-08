@@ -45,6 +45,8 @@ Data is sent in packets. Each packet has an **id** in range *0 - 255*. The **id*
 is used for identifying topic and data type of the packet. The library does not know data type for a certain id.
 User must keep track of this.
 
+Example with booleran array and safety timeout is provided with files
+
 Example:
 
 ```c++

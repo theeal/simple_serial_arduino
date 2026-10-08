@@ -6,8 +6,12 @@ bytes_2_float	KEYWORD2
 float_2_bytes	KEYWORD2
 bytes_2_int	KEYWORD2
 int_2_bytes	KEYWORD2
+bool_array_to_byte KEYWORD2
+bytes_to_bool_array KEYWORD2
+saftey timeout KEYWORD2
 send	KEYWORD2
 send_float	KEYWORD2
 send_int	KEYWORD2
+send_booleran_array KEYWORD2
 read_loop	KEYWORD2
 send_loop	KEYWORD2

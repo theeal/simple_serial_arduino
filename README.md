@@ -1,4 +1,5 @@
 # Simple Serial
+This library originally created by [nplan](https://github.com/nplan/simple_serial_arduino)  
 
 A simple library for communication over serial interfaces.
 It can be used for **microcontroller to microcontroller** communication  or

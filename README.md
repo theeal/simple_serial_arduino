@@ -6,7 +6,7 @@ It can be used for **microcontroller to microcontroller** communication  or
 
 Currently supported platforms:
 * Arduino / C++
-* Python
+* Python [( test](https://github.com/nplan/simple_serial_python)
 
 This is a repository for the Arduino / C++ version. Find python version at:
 https://github.com/nplan/simple_serial_python

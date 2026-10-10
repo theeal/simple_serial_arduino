@@ -56,7 +56,8 @@ private:
     void write_escaped(uint8_t b);
 };
 
-#endif // SIMPLE_SERIAL_H/*
+#endif // SIMPLE_SERIAL_H
+/*
  * SimpleSerial.h - Library for serial communication.
  */
 
